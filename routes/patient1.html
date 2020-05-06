@@ -1,180 +1,269 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-
-    <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" id="compiled.css-css" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.17.0.min.css?ver=4.17.0" type="text/css" media="all">
-    
-
-</head>
-
-<body>
-    <div class="container">
-        <section class="p-1">
-
-            <div class="wrapper-editor">
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
+  <style>
+     * {
+            padding: 0;
+            margin: 0;
+            font-family: Century Gothic;
+        }
         
-        
+        form {
            
+            display: block;
+            width: 100px;
+        }
         
-              <div class="row d-flex justify-content-center modalWrapper">
-                <div class="modal fade addNewInputs" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAdd" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold text-primary ml-5">Add new form</h4>
-                        <button type="button" class="close text-primary" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                        </button>
-                      </div>
-                      <form action="/patient/add" method="POST">
-                      <div class="modal-body mx-3">
-                        <div class="md-form mb-5">
-                          <input type="text" id="name" class="form-control validate">
-                          <label data-error="wrong" data-success="right" for="inputName">Name</label>
-                        </div>
+        input {
+            border: 1px solid gray;
+            border-radius: 3px;
+            margin-bottom: 4px;
+            height: 35px;
+            width: 100px;
+            padding: 0px 2px;
+            box-sizing: border-box;
+        }
         
-                        <div class="md-form mb-5">
-                          <input type="number" id="phone_number" class="form-control validate">
-                          <label data-error="wrong" data-success="right" for="inputPosition">Phone Number</label>
-                        </div>
+        button {
+            width: 100px;
+            padding: 10px 0px;
+            background-color: rgb(9, 127, 223);
+            border: none;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
         
-                        <div class="md-form mb-5">
-                          <input type="text" id="email" class="form-control validate">
-                          <label data-error="wrong" data-success="right" for="inputOfficeInput">Email</label>
-                        </div>
+        h1 {
+            text-align: center;
+            color: rgb(31, 31, 31);
+            font-size: 50px;
+        }
         
-    
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
         
-                        <div class="md-form mb-5">
-                          <input type="date" id="data" class="form-control" placeholder="Birth Date">
-                          <label data-error="wrong" data-success="right" for="inputDate"></label>
-                        </div>
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            width: 20px;
+            height: auto;
+        }
         
-                        <div class="md-form mb-5">
-                          <input type="text" id="gender" class="form-control validate">
-                          <label data-error="wrong" data-success="right" for="inputSalary">Gender</label>
-                        </div>
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
 
-                        <div class="md-form mb-5">
-                          <input type="text" id="social_status" class="form-control validate">
-                          <label data-error="wrong" data-success="right" for="inputSalary">Social Status</label>
-                        </div>
-                        <div class="md-form mb-5">
-                          <input type="text" id="location" class="form-control validate">
-                          <label data-error="wrong" data-success="right" for="inputSalary">Location</label>
-                        </div>
-                      </div>
-                      <div class="modal-footer d-flex justify-content-center buttonAddFormWrapper">
-                        <button type="submit"  class="btn btn-outline-primary btn-block buttonAdd waves-effect waves-light" data-dismiss="modal">Add form
-                          <i class="fas fa-paper-plane-o ml-1"></i>
-                        </button>
-                      
-                      </div>
-                      
-                      </form>
+    html,body{
+      height: 100%;
+      width: 100%;
+    }
+   #topbar{
+     width: 100%;
+     height: 50px;
+background-color: rgb(43, 43, 43);
+   }
+   #container{
+     height: 100%;
+     width: 100%;
+     display: flex;
+    
+   }
+   #sidebar{
+    background-color: rgb(252, 242, 212);
+    height: 100%;
+    width: 20%;
+   }
+   #content{
+    background-color: rgb(255, 255, 255);
+height: 100%;
+width: 80%;
+}
+    #update{
+       position: absolute;
+       background-color: whitesmoke;
+       margin-top: -450px;
+       margin-left: -800px;
+       width: 400px;
+       padding: 30px;
+
+    }
+    #update input{
+        width:300px;
+        padding: 20px 10px;
+        display: block;
+    margin: auto;
+    }
+    #update button{
+
+    display: block;
+    margin: auto;
+    padding: 7px 30px ;
+    width: auto;
+    }
+    #close_update{
+
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: -25px;
+        margin-left: 345px;
+        background-color: rgb(9, 127, 223);
+            border: none;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            color: white;
+
+        }
+    #shadow{
+
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.685);
+        height:    100%;
+        width: 100%;
+        display: none;
+    }
+
+  </style>
+  <script>
+      function update() {
+          form=document.getElementById("update");
+          if (form.style.display=="none") {
+            form.style.display="block";
+            document.getElementById("shadow").style.display="block";
+          }
+          else{
+            document.getElementById("shadow").style.display="none";
+
+            form.style.display="none";
+          }
+      }
+      function close_update() {
+        form=document.getElementById("update");
+
+        document.getElementById("shadow").style.display="none";
+
+        form.style.display="none";
+          
+      }
+  </script>
+</head>
+<body>
+    <div id="shadow"></div>
+<div id="topbar"></div>
+<div id="container">
+  <div id="sidebar">
+  </div>
+  <div id="content">
+    
+    <h1>Patient List</h1>
+
+    <form action="/patient" method="POST">
+        <input type="text" name="name" id="name" placeholder="Name">
+        <br>
+        <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number">
+        <br>
+        <input type="text" name="gender" id="gender" placeholder="gender">
+        <br>
+        <input type="text" name="social_status" id="social_status" placeholder="social_status">
+        <br>
+        <input type="text" name="location" id="location" placeholder="location">
+        <br>
+        <input type="date" name="birth_date" id="birth_date" placeholder="birth_date">
+        <br>
+        <input type="text" name="email" id="email" placeholder="email">
+        <br>
+        <button type="submit" class="btn">Add pationt</button>
+
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+
+
+                <th>name</th>
+                <th>phone_number</th>
+                <th>gender</th>
+                <th>social_status</th>
+
+                <th>location</th>
+                <th>birth_date</th>
+                <th>email</th>
+                <th >actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+         <% patients.forEach(patient => { %>
+                <tr>
+                   
+
+                    <td>
+                        <%= patient.name %>
+                    </td>
+                    <td>
+                        <%= patient.phone_number %>
+                    </td>
+                    <td>
+                        <%= patient.gender %>
+                    </td>
+                    <td>
+                        <%= patient.social_status %>
+                    </td>
+                    <td>
+                        <%= patient.location %>
+                    </td>
+                    <td>
+                        <%= patient.birth_date %>
+                    </td>
+                    <td>
+                        <%= patient.email %>
+                    </td>
+                    <td style="display: flex; width: 230px; justify-content: flex-start;">
+                        <form action="/patient/<%= patient.id %>?_method=DELETE" method="POST" style="width: 200px; height: 30px;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <div>
+                        <button onclick="update()" type="submit" class="btn">update</button>
+                        <form style="display:none ;" id="update" action="/patient/<%= patient.id %>?_method=PUT" method="POST">
+                            <p onclick="close_update()" id="close_update">X</p>
+                            <input type="text" name="name" id="name" placeholder="Name">
+                            <br>
+                            <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number">
+                            <br>
+                            <input type="text" name="gender" id="gender" placeholder="gender">
+                            <br>
+                            <input type="text" name="social_status" id="social_status" placeholder="social_status">
+                            <br>
+                            <input type="text" name="location" id="location" placeholder="location">
+                            <br>
+                            <input type="date" name="birth_date" id="birth_date" placeholder="birth_date">
+                            <br>
+                            <input type="text" name="email" id="email" placeholder="email">
+                            <br>
+                            <button type="submit" class="btn">update</button>
+
+                        </form>
                     </div>
-                  </div>
-                </div>
-        
-                <div class="text-center">
-                  <a href="" class="btn btn-info btn-rounded btn-sm waves-effect waves-light" data-toggle="modal" data-target="#modalAdd">Add<i class="fas fa-plus-square ml-1"></i></a>
-                </div>
-        
-                <div class="modal fade modalEditClass" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold text-secondary ml-5">Edit form</h4>
-                        <button type="button" class="close text-secondary" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                        </button>
-                      </div>
-                     
-                    
-                    </div>
-                  </div>
-                </div>
-        
-             
-        
-                <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header text-center">
-                        
-                      </div>
-                      <div class="modal-body mx-3">
-                        <p class="text-center h4">Are you sure to delete selected row?</p>
-        
-                      </div>
-                      <div class="modal-footer d-flex justify-content-center deleteButtonsWrapper">
-                        <button type="button" class="btn btn-danger btnYesClass waves-effect waves-light" id="btnYes" data-dismiss="modal">Yes</button>
-                        <button type="button" class="btn btn-primary btnNoClass waves-effect waves-light" id="btnNo" data-dismiss="modal">No</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-        
-               
-              </div>
-        
-              <div id="dtBasicExample_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length bs-select" id="dtBasicExample_length"><label>Show <select name="dtBasicExample_length" aria-controls="dtBasicExample" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="dtBasicExample_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dtBasicExample"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="dtBasicExample" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dtBasicExample_info" style="width: 100%;">
-                <thead>
-                  <tr role="row"><th class="th-sm sorting_asc" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name
-        
-                    : activate to sort column descending" style="width: 104px;">Name
-        
-                    </th><th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Position
-        
-                    : activate to sort column ascending" style="width: 163px;">Position
-        
-                    </th><th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Office
-        
-                    : activate to sort column ascending" style="width: 73px;">Office
-        
-                    </th><th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Age
-        
-                    : activate to sort column ascending" style="width: 54px;">Age
-        
-                    </th><th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Start date
-        
-                    : activate to sort column ascending" style="width: 65px;">Start date
-        
-                    </th><th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Salary
-        
-                    : activate to sort column ascending" style="width: 55px;">Salary
-        
-                    </th></tr>
-                </thead>
-                <tbody>
-                  
-                
-                </tbody>
-                <tfoot>
-                  <tr><th rowspan="1" colspan="1">Name
-                    </th><th rowspan="1" colspan="1">Position
-                    </th><th rowspan="1" colspan="1">Office
-                    </th><th rowspan="1" colspan="1">Age
-                    </th><th rowspan="1" colspan="1">Start date
-                    </th><th rowspan="1" colspan="1">Salary
-                    </th></tr>
-                </tfoot>
-              </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dtBasicExample_previous"><a href="#" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link waves-effect waves-effect">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dtBasicExample" data-dt-idx="1" tabindex="0" class="page-link waves-effect waves-effect">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="2" tabindex="0" class="page-link waves-effect waves-effect">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="3" tabindex="0" class="page-link waves-effect waves-effect">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="4" tabindex="0" class="page-link waves-effect waves-effect">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="5" tabindex="0" class="page-link waves-effect waves-effect">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="6" tabindex="0" class="page-link waves-effect waves-effect">6</a></li><li class="paginate_button page-item next" id="dtBasicExample_next"><a href="#" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link waves-effect waves-effect">Next</a></li></ul></div></div></div></div>
-            </div>
-        
-          </section>
-    </div>
+                    </td>
+                   
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+
+  </div>
+</div>
+
 </body>
 </html>
-
-
-
-

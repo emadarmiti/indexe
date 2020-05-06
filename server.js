@@ -4,19 +4,11 @@ var bodyParser = require('body-parser');
 const patient_router = require('./routes/patient');
 const Patient = require('./models/patient.model')
 const methodOverride = require('method-override')
-<<<<<<< HEAD
-const bodyparser=require('body-parser');
-const https=require('https');
-path = require('path');
-  
-const app= express();
-=======
 const https = require('https');
 path = require('path');
 
 
 const app = express();
->>>>>>> 6eac64312dd93545cbff671ce89680a087a138a8
 
 
 app.use(methodOverride('_method'))
@@ -33,38 +25,10 @@ connection.once('open', () => {
 
     console.log('database is ready');
 
-<<<<<<< HEAD
-var chemical="acenocoumarol";
-
-app.post('/',  (req, res) => {
- 
-const t = req.body.chemical;
-console.log(t);
-
-    res.redirect(301, '/');
-  
-});
-
-
-app.get('/', async (req, res) => {
- 
-    var url = `https://api.pharmgkb.org/v1/data/chemical?name=${chemical}`;
-    console.log(url);
-    
-    var temp=[];
-    https.get(url,(response)=>{
-
-        console.log(response.statusCode);
-        response.on('data',(data)=>{
-               
-                temp=JSON.parse(data)['data'][0]['altNames']['trade'];});
-    });
-=======
 })
 
 
 
->>>>>>> 6eac64312dd93545cbff671ce89680a087a138a8
 
 app.get('/', async(req, res) => {
     const patients = await Patient.find().sort({ name: 'asc' })

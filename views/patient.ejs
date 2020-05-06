@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>BMI Calculator</title>
-    <style>
-        body {
-            background-color: rgb(235, 235, 235);
-        }
-        
-        * {
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
+  <style>
+     * {
             padding: 0;
             margin: 0;
             font-family: Century Gothic;
         }
         
         form {
-            margin: auto;
+           
             display: block;
             width: 100px;
         }
@@ -50,39 +49,182 @@
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
-            width: 50%;
+            margin-left: 100px;
+
         }
-        
-        td,
-        th {
+        #add{
+            margin-left: 100px;
+            margin-bottom: 5px;
+
+        }
+        td, th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
             width: 20px;
-            height: auto;
+            height: 70px;
+            font-size: 15px;
         }
         
-        tr:nth-child(even) {
-            background-color: #dddddd;
+       th{
+           background-color: rgb(184, 184, 184);
+           color: rgb(41, 41, 41);
+           text-align: center;
+           height: auto;
+       }
+
+    html,body{
+      height: 100%;
+      width: 100%;
+    }
+   #topbar{
+       position: absolute;
+     width: 100%;
+     height: 50px;
+background-color: rgb(43, 43, 43);
+   }
+   #container{
+     height: 100%;
+     width: 100%;
+     display: flex;
+    
+   }
+   #sidebar{
+    background-color: rgb(218, 218, 218);
+    height: 100%;
+    width: 20%;
+   }
+   #content{
+    background-color: rgb(255, 255, 255);
+height: auto;
+width: 80%;
+margin-top: 50px;
+}
+    #update{
+       position: absolute;
+       background-color: whitesmoke;
+       margin-top: -200px;
+       margin-left: -600px;
+       width: 400px;
+       padding: 30px;
+
+
+    }
+    #update input{
+        width:300px;
+        padding: 20px 10px;
+        display: block;
+    margin: auto;
+    }
+    #update button{
+
+    display: block;
+    margin: auto;
+    padding: 7px 30px ;
+    width: auto;
+    }
+    #close_update{
+
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: -25px;
+        margin-left: 345px;
+        background-color: rgb(9, 127, 223);
+            border: none;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            color: white;
+
         }
-    </style>
+    #shadow{
+
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.685);
+        height:    100%;
+        width: 100%;
+        display: none;
+    }
+    #add_form{
+        display: none;
+        position: absolute;
+       background-color: whitesmoke;
+       margin-top: -100px;
+       margin-left:250px ;
+       width: 400px;
+       padding: 30px;
+    }
+    #add_form input{
+        width:300px;
+        padding: 20px 10px;
+        display: block;
+    margin: auto;
+    }
+    #add_form button{
+
+    display: block;
+    margin: auto;
+    padding: 7px 30px ;
+    width: auto;
+    }
+
+  </style>
+  <script>
+      function update() {
+          form=document.getElementById("update");
+          if (form.style.display=="none") {
+            form.style.display="block";
+            document.getElementById("shadow").style.display="block";
+          }
+          else{
+            document.getElementById("shadow").style.display="none";
+
+            form.style.display="none";
+          }
+      }
+      function close_update() {
+        form=document.getElementById("update");
+
+        document.getElementById("shadow").style.display="none";
+
+        form.style.display="none";
+          
+      }
+      function close_add() {
+        form=document.getElementById("add_form");
+
+        document.getElementById("shadow").style.display="none";
+
+        form.style.display="none";
+          
+      }
+      function add() {
+          form=document.getElementById("add_form");
+          if (form.style.display=="none") {
+            form.style.display="block";
+            document.getElementById("shadow").style.display="block";
+          }
+          else{
+            document.getElementById("shadow").style.display="none";
+
+            form.style.display="none";
+          }
+      }
+  </script>
 </head>
-
 <body>
-<<<<<<< HEAD
-    <form action="/" method='POST'>
-    <input type="text" id="chemical" name="chemical" placeholder="chemical">
-    <button type="submit" class="btn">view</button>
-=======
-    <form action="/patient/med" method='POST'>
-        <input type="text" name="chemical" id="chemical">
-        <button type="submit" class="btn">view</button>
->>>>>>> 6eac64312dd93545cbff671ce89680a087a138a8
-    </form>
+    <div id="shadow"></div>
+<div id="topbar"></div>
+<div id="container">
+  <div id="sidebar">
+  </div>
+  <div id="content">
+    
+    <h1>Patient List</h1>
+    <button id="add" onclick="add()">Add Patient</button>
+    <form id="add_form"  style="display: none;" action="/patient" method="POST">
+        <p onclick="close_add()" id="close_update">X</p>
 
-    <h1>Add Patient</h1>
-
-    <form action="/patient" method="POST">
         <input type="text" name="name" id="name" placeholder="Name">
         <br>
         <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number">
@@ -114,12 +256,15 @@
                 <th>location</th>
                 <th>birth_date</th>
                 <th>email</th>
+                <th >actions</th>
             </tr>
         </thead>
 
         <tbody>
-            <% patients.forEach(patient => { %>
+         <% patients.forEach(patient => { %>
                 <tr>
+                   
+
                     <td>
                         <%= patient.name %>
                     </td>
@@ -136,18 +281,19 @@
                         <%= patient.location %>
                     </td>
                     <td>
-                        <%= patient.birth_date %>
+                        <%= patient.birth_date.toLocaleDateString() %>
                     </td>
                     <td>
                         <%= patient.email %>
                     </td>
-                    <td>
-                        <form action="/patient/<%= patient.id %>?_method=DELETE" method="POST" style="width: 200px; height: 30px;">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                    <td style="display: flex; width: 230px; justify-content: flex-start; align-items: center;">
+                        <form action="/patient/<%= patient.id %>?_method=DELETE" method="POST" style="width: 200px; ">
+                            <button type="submit" class="btn ">Delete</button>
                         </form>
-                    </td>
-                    <td>
-                        <form action="/patient/<%= patient.id %>?_method=PUT" method="POST">
+                        <div>
+                        <button onclick="update()" type="submit" class="btn">update</button>
+                        <form style="display:none ;" id="update" action="/patient/<%= patient.id %>?_method=PUT" method="POST">
+                            <p onclick="close_update()" id="close_update">X</p>
                             <input type="text" name="name" id="name" placeholder="Name">
                             <br>
                             <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number">
@@ -165,14 +311,16 @@
                             <button type="submit" class="btn">update</button>
 
                         </form>
+                    </div>
                     </td>
+                   
                 </tr>
                 <% }) %>
         </tbody>
     </table>
-    </div>
 
+  </div>
+</div>
 
 </body>
-
 </html>
