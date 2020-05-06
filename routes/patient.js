@@ -31,13 +31,11 @@ router.post('/news', (req, res) => {
 
 
     newsapi.v2.sources({
-        category: 'technology',
+        category: 'health',
         language: 'en',
-        country: 'us'
-    }).then(response => {
-        console.log(response);
-        res.render('news', { xx: response })
-
+    }).then(x => {
+        console.log(x.sources)
+        res.render('news', { xx: x.sources })
     });
 
 

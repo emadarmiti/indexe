@@ -10,7 +10,12 @@
 <body>
 
 
-    <%= xx %>
+    <% xx.forEach(x => { %>
+        <%= x.name %> <br>
+            <%= x.description %> <br>
+                <%= x.url %> <br>
+
+                    <% }) %>
 
 
 
