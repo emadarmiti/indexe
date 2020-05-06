@@ -20,8 +20,29 @@ router.post('/med', (req, res) => {
         });
     });
 
+});
+
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('3b6884e0a69b406f84edde115fb6f74f');
+
+router.post('/news', (req, res) => {
+
+    chemical = req.body.chemical;
+
+
+    newsapi.v2.sources({
+        category: 'technology',
+        language: 'en',
+        country: 'us'
+    }).then(response => {
+        console.log(response);
+        res.render('news', { xx: response })
+
+    });
+
 
 });
+
 
 router.delete('/:id', async(req, res) => {
     await patient.findByIdAndDelete(req.params.id)

@@ -16,6 +16,7 @@ app.set("view engine", "ejs")
 app.use(express.json());
 
 
+
 const uri = 'mongodb+srv://emadarmiti:Th!nker1@dexter-cqfvi.mongodb.net/test?retryWrites=true&w=majority';
 
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
@@ -33,6 +34,7 @@ connection.once('open', () => {
 app.get('/', async(req, res) => {
     const patients = await Patient.find().sort({ name: 'asc' })
     res.render('patient', { patients: patients })
+
 });
 
 
