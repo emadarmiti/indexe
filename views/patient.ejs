@@ -32,12 +32,16 @@
         button {
             width: 100px;
             padding: 10px 0px;
-            background-color: rgb(9, 127, 223);
+            background-color:  rgb(83, 55, 46);
             border: none;
             border-radius: 3px;
             color: white;
             cursor: pointer;
             box-sizing: border-box;
+        }
+        button:hover{
+            background-color:  rgb(230, 88, 32);
+            color: white;
         }
         
         h1 {
@@ -82,9 +86,10 @@
         
         #topbar {
             position: absolute;
-            width: 100%;
+            width: 80%;
             height: 50px;
-            background-color: rgb(43, 43, 43);
+            background-color: rgb(230, 88, 32);
+            
         }
         
         #container {
@@ -97,20 +102,21 @@
             background-color: rgb(218, 218, 218);
             height: 100%;
             width: 20%;
+            padding-top: 100px;
         }
         
         #content {
             background-color: rgb(255, 255, 255);
             height: auto;
             width: 80%;
-            margin-top: 50px;
+            margin-top: ;
         }
         
         #update {
             position: absolute;
             background-color: whitesmoke;
-            margin-top: -200px;
-            margin-left: -600px;
+            margin-top: -260px;
+            margin-left: -660px;
             width: 400px;
             padding: 30px;
         }
@@ -134,7 +140,7 @@
             font-weight: bold;
             margin-top: -25px;
             margin-left: 345px;
-            background-color: rgb(9, 127, 223);
+            background-color:  rgb(230, 88, 32);
             border: none;
             text-align: center;
             width: 20px;
@@ -154,8 +160,8 @@
             display: none;
             position: absolute;
             background-color: whitesmoke;
-            margin-top: -100px;
-            margin-left: 250px;
+            margin-top: -160px;
+            margin-left: 290px;
             width: 400px;
             padding: 30px;
         }
@@ -172,6 +178,13 @@
             margin: auto;
             padding: 7px 30px;
             width: auto;
+        }
+        #sidebar h3{
+                color:  rgb(230, 88, 32);
+                margin-left: 80px;
+                font-weight: bolder;
+                margin-top: -95px;
+                font-size: 40px;
         }
     </style>
 
@@ -221,22 +234,23 @@
 </head>
 
 <body>
-    <form action="/patient/med" method='POST'>
-        <input type="text" name="chemical" id="chemical">
-        <button type="submit" class="btn">view similar medication</button>
-    </form>
-    <form action="/patient/news" method='POST'>
-        <button type="submit" class="btn">news</button>
-    </form>
-    <h1>Add Patient</h1>
+    
     <div id="shadow"></div>
-    <div id="topbar"></div>
+    
     <div id="container">
         <div id="sidebar">
+            <h3>INDEXE</h3>
+            <form action="/patient/med" method='POST' style="margin-left: 50px; margin-top: 480px;">
+                <input  type="text" name="chemical" id="chemical" placeholder="Chemical Name" style="width: 190px; text-align: center;">
+                <button type="submit" class="btn" style="width: 190px;">View Similar Medication</button>
+            </form>
+            <form action="/patient/news" method='POST' style="margin-left: 50px; margin-top: 10px;">
+                <button  style="width: 190px;" type="submit" class="btn">Health News</button>
+            </form>
         </div>
         <div id="content">
-
-            <h1>Patient List</h1>
+            <div id="topbar"> </div>
+            <h1 style="margin-bottom: 50px; margin-top: 100px;">Patient List</h1>
             <button id="add" onclick="add()">Add Patient</button>
             <form id="add_form" style="display: none;" action="/patient" method="POST">
                 <p onclick="close_add()" id="close_update">X</p>
