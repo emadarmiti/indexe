@@ -25,7 +25,7 @@ connection.once('open',()=>{
 
 
 app.get('/', async (req, res) => {
-  const patients = await Patient.find().sort({ name: 'desc' })
+  const patients = await Patient.find().sort({ name: 'asc' })
   res.render('patient', { patients: patients })
 })
 
