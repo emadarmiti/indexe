@@ -12,15 +12,14 @@ router.post('/med', (req, res) => {
     chemical = req.body.chemical;
 
     var url = `https://api.pharmgkb.org/v1/data/chemical?name=${chemical}`;
-    var temp = [];
+    var x;
     https.get(url, (response) => {
         response.on('data', (data) => {
-            tmep = JSON.parse(data)['data'][0]['altNames']['trade'];
+            x = (JSON.parse(data)['data'][0]['altNames']['trade']);
+            res.render('meds', { xx: x })
         });
     });
 
-
-    res.redirect('/');
 
 });
 
