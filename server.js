@@ -1,14 +1,11 @@
 const express = require('express');
-const cors=require('cors');
 const mongoose=require('mongoose');
 const patient_router=require('./routes/patient');
 const Patient = require('./models/patient.model')
 const methodOverride = require('method-override')
-require('dotenv').config();
 
 const app= express();
 	
-app.use(cors());
 
 app.use(methodOverride('_method'))
 app.set("view engine", "ejs")
