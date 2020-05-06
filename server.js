@@ -1,13 +1,22 @@
 const express = require('express');
-const mongoose=require('mongoose');
-const patient_router=require('./routes/patient');
+const mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+const patient_router = require('./routes/patient');
 const Patient = require('./models/patient.model')
 const methodOverride = require('method-override')
+<<<<<<< HEAD
 const bodyparser=require('body-parser');
 const https=require('https');
 path = require('path');
   
 const app= express();
+=======
+const https = require('https');
+path = require('path');
+
+
+const app = express();
+>>>>>>> 6eac64312dd93545cbff671ce89680a087a138a8
 
 
 app.use(methodOverride('_method'))
@@ -15,17 +24,16 @@ app.set("view engine", "ejs")
 app.use(express.json());
 
 
-const uri='mongodb+srv://emadarmiti:Th!nker1@dexter-cqfvi.mongodb.net/test?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://emadarmiti:Th!nker1@dexter-cqfvi.mongodb.net/test?retryWrites=true&w=majority';
 
-mongoose.connect(uri,{useNewUrlParser:true,useCreateIndex:true,useUnifiedTopology: true });
-const connection=mongoose.connection;
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+const connection = mongoose.connection;
 
-connection.once('open',()=>{
+connection.once('open', () => {
 
     console.log('database is ready');
-    
-})
 
+<<<<<<< HEAD
 var chemical="acenocoumarol";
 
 app.post('/',  (req, res) => {
@@ -51,12 +59,19 @@ app.get('/', async (req, res) => {
                
                 temp=JSON.parse(data)['data'][0]['altNames']['trade'];});
     });
+=======
+})
 
-  const patients = await Patient.find().sort({ name: 'asc' })
-  res.render('patient', { patients: patients,temp:temp })
+
+
+>>>>>>> 6eac64312dd93545cbff671ce89680a087a138a8
+
+app.get('/', async(req, res) => {
+    const patients = await Patient.find().sort({ name: 'asc' })
+    res.render('patient', { patients: patients })
 });
 
 
-app.use('/patient',patient_router);
+app.use('/patient', patient_router);
 
-app.listen(4000,console.log(4000));
+app.listen(4000, console.log(4000));
