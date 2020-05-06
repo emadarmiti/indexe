@@ -3,7 +3,10 @@ const mongoose=require('mongoose');
 const patient_router=require('./routes/patient');
 const Patient = require('./models/patient.model')
 const methodOverride = require('method-override')
+const https=require('https');
+path = require('path');
 
+  
 const app= express();
 	
 
@@ -23,11 +26,32 @@ connection.once('open',()=>{
     
 })
 
+var chemical="acenocoumarol";
+
+app.post('/',  (req, res) => {
+ 
+chemical= req.body.chemical;
+    res.redirect('/');
+  
+});
+
 
 app.get('/', async (req, res) => {
+ 
+    var url = `https://api.pharmgkb.org/v1/data/chemical?name=${chemical}`;
+    var temp=[];
+    https.get(url,(response)=>{
+
+        console.log(response.statusCode);
+        response.on('data',(data)=>{
+               
+                tmep=JSON.parse(data)['data'][0]['altNames']['trade'];});
+    });
+
   const patients = await Patient.find().sort({ name: 'asc' })
-  res.render('patient', { patients: patients })
-})
+  res.render('patient', { patients: patients,temp:temp })
+});
+
 
 app.use('/patient',patient_router);
 

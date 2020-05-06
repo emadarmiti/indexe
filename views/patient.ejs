@@ -14,7 +14,7 @@
         form{
             margin: auto;
             display: block;
-            width: 500px;
+            width: 100px;
             
           
         }
@@ -47,7 +47,7 @@
         table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 50%;
 }
 
 td, th {
@@ -64,6 +64,14 @@ tr:nth-child(even) {
     </style>
 </head>
 <body>
+    <form action="/" method='POST'>
+    <input type="text" id="chemical">
+    <button type="submit" class="btn">view</button>
+    </form>
+    <% temp.forEach(t => { %>
+    <p style="background-color: black; color: wheat;">  <%= t %></p>
+    
+    <% }) %>
     <h1>Add Patient</h1>
     
     <form  action="/patient" method="POST">
@@ -100,6 +108,7 @@ tr:nth-child(even) {
       <th>email</th>
     </tr>
   </thead>
+
   <tbody>
     <% patients.forEach(patient => { %>
         <tr>

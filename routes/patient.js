@@ -28,9 +28,11 @@ router.route('/').post((req,res)=>{
 
 router.put('/:id', async (req, res) => {
   
-  await patient.update({_id: req.params.id},req.body)
+  await patient.updateOne({_id: req.params.id},req.body)
   res.redirect('/')
   
   })
 
 module.exports=router;
+
+
